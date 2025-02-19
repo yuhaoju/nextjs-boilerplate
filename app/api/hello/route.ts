@@ -14,4 +14,7 @@ export async function GET(request: Request) {
     Region: ${region}
     Language: ${language}`
   );
+
+  // Redirect to example.com
+  // return Response.redirect("https://example.com", 302);
 }
