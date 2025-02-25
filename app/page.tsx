@@ -15,9 +15,9 @@ export default async function HomePage() {
   const headersList = await headers();
   const country = headersList.get("X-User-Country") || "Unknown";
   const timezone = headersList.get("X-User-Timezone") || "UTC";
+  const storedGreeting = headersList.get("X-Greeting");
 
-  // 根据国家代码获取问候语，默认为 "Hello"
-  const greeting = greetings[country] || "Hello";
+  const greeting = storedGreeting || greetings[country] || "Hello";
 
   return (
     <main className="p-6">
