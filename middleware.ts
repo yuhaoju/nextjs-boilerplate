@@ -21,10 +21,7 @@ async function greetingMiddleware(request: NextRequest, response: NextResponse) 
 export async function middleware(request: NextRequest) {
   let response = NextResponse.next();
 
-  // 调用地理位置中间件
   ({ request, response } = await geoLocationMiddleware(request, response));
-
-  // 调用问候语中间件
   ({ request, response } = await greetingMiddleware(request, response));
 
   return response;
