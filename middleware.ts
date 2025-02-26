@@ -29,7 +29,10 @@ async function geoLocationMiddleware(request: NextRequest, response: NextRespons
 // This middleware function retrieves a greeting from the edge config and adds it to the response headers.
 async function greetingMiddleware(request: NextRequest, response: NextResponse): Promise<NextResponse> {
   const greeting = await get('greeting');
+  const isExperimentEnabled = await get('isExperimentEnabled');
+
   response.headers.set('X-Greeting', String(greeting));
+  response.headers.set('X-Experiment', String(isExperimentEnabled));
 
   return response;
 }
